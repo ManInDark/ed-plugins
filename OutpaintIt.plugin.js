@@ -75,7 +75,7 @@ function outpaintGetTaskRequest(origRequest, image, widen, all=false) {
     //guidance_scale: Math.max(origRequest.guidance_scale,15), //Some suggest that higher guidance is desireable for img2img processing
     num_inference_steps: parseInt(numInferenceStepsField.value),
     num_outputs: 1,
-    seed: Math.floor(Math.random() * 10000000),
+    seed: origRequest.seed,
   })
   newTaskRequest.seed = newTaskRequest.reqBody.seed;
   newTaskRequest.reqBody.sampler_name = 'ddim';  //ensure img2img sampler change is properly reflected in log file
