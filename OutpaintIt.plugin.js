@@ -69,11 +69,11 @@ function outpaintGetTaskRequest(origRequest, image, widen, all=false) {
       
   newTaskRequest.reqBody = Object.assign({}, origRequest, {
     init_image: image.src,
-    prompt_strength: 0.93+Math.random()*.07,
+    prompt_strength: parseFloat(promptStrengthField.value),
     width: origRequest.width + ((widen || all)?outpaintSizeIncrease:0),
     height: origRequest.height + ((!widen || all)?outpaintSizeIncrease:0),
     //guidance_scale: Math.max(origRequest.guidance_scale,15), //Some suggest that higher guidance is desireable for img2img processing
-    num_inference_steps: Math.max(parseInt(origRequest.num_inference_steps), 50),  //DDIM may require more steps for better results
+    num_inference_steps: parseInt(numInferenceStepsField.value),
     num_outputs: 1,
     seed: Math.floor(Math.random() * 10000000),
   })
